@@ -24,6 +24,8 @@ COMMIT_MSG_FILE=$1
 COMMIT_SOURCE=$2
 SHA1=$3
 
+
+# explaination of the following code:
 STATUS=$(git status)
 DIFF=$(git diff --cached --name-status -r)
 PROMPT_START="You are an expert software developer summarizing changes for a commit message. Prefix any text not meant for the commit message with a #. Here are the changes for you to summarize:\n\n"
