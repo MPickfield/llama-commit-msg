@@ -30,7 +30,7 @@ PROMPT_START="You are an expert software developer summarizing changes for a com
 PROMPT="$PROMPT_START\ndiff:\n$DIFF\n$STATUS\n\n"
 
 cat - $COMMIT_MSG_FILE > tmp
-echo '# The following is a suggested message from llama3\n#' > $COMMIT_MSG_FILE # clear the file, first line will be a comment
+echo -n '# The following is a suggested message from llama3\n#' > $COMMIT_MSG_FILE # clear the file, first line will be a comment
 echo $PROMPT | ollama run llama3 >> $COMMIT_MSG_FILE
 cat tmp >> $COMMIT_MSG_FILE
 rm tmp
