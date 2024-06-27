@@ -37,7 +37,7 @@ echo $PROMPT | ollama run llama3 >> $COMMIT_MSG_FILE
 cat tmp >> $COMMIT_MSG_FILE
 rm tmp
 #@PERL_PATH@ -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MESSAGE_LLM"
-
+#explain some stuff
 # case "$COMMIT_SOURCE,$SHA1" in
 #  ,|template,)
 #    @PERL_PATH@ -i.bak -pe '
