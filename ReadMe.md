@@ -13,4 +13,4 @@ download llama3
 
 Symlink the commit hook into any repo you'd like to use it
 
-ln -s /this/repo/path/prepare-commit-msg /your/repo/path/.git/hooks
+`ln -s /this/repo/path/prepare-commit-msg /your/repo/path/.git/hooks`
