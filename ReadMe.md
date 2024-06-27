@@ -1,5 +1,11 @@
-Install llama locally
-download:
+This is a git hook which uses a locally running llama3 to geerate a suggested commit message for your
+changes.
+
+Only tested on mac
+
+## Setup
+
+Download and install ollama:
 https://ollama.com/download/mac
 
 download llama3
