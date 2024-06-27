@@ -26,7 +26,7 @@ SHA1=$3
 
 STATUS=$(git status)
 DIFF=$(git diff --cached --name-status -r)
-PROMPT_START="You are an expert software developer summarizing changes for a commit message. Prefix any commentary with a #. Here are the changes for you to summarize:\n\n"
+PROMPT_START="You are an expert software developer summarizing changes for a commit message. Prefix any text not meant for the commit message with a #. Here are the changes for you to summarize:\n\n"
 PROMPT="$PROMPT_START\ndiff:\n$DIFF\n$STATUS\n\n"
 
 cat - $COMMIT_MSG_FILE > tmp
