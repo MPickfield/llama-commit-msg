@@ -14,3 +14,8 @@ download llama3
 Symlink the commit hook into any repo you'd like to use it
 
 `ln -s /this/repo/path/prepare-commit-msg /your/repo/path/.git/hooks`
+
+
+## usage
+
+When you go to commit without a message, a llama3 insstance will be started and will generate a suggested commit message for you.
