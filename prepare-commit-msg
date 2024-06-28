@@ -9,6 +9,7 @@ COMMIT_MSG_FILE=$1
 COMMIT_SOURCE=$2
 SHA1=$3
 
+# test wip
 cat $COMMIT_MSG_FILE
 
 # explaination of the following code:
