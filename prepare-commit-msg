@@ -11,7 +11,6 @@ SHA1=$3
 
 # Check if $COMMIT_MSG_FILE contains any non-comment, non-empty lines
 if grep -qvE '^#|^$' "$COMMIT_MSG_FILE"; then
-    echo "Commit message already exists, skipping ollama suggestion"
     exit 0
 fi
 
