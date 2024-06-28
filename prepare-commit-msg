@@ -9,12 +9,13 @@ COMMIT_MSG_FILE=$1
 COMMIT_SOURCE=$2
 SHA1=$3
 
+cat $COMMIT_MSG_FILE
 
 # explaination of the following code:
 STATUS=$(git status)
 DIFF=$(git diff)
 PROMPT_START="You are an expert software developer summarizing changes for a commit message. Do not say anything other than the commit message. A good commit message lists the files and explains what has changed <file>:<explain what was changed>. Here are the changes for you to summarize:\n\n"
-PROMPT="$PROMPT_START\ndiff:\n$DIFF\n$STATUS\n\n"
+PROMPT="$PROMPT_START\ngit diff output:\n$DIFF\ngit status output:$STATUS\n\n"
 
 cat - $COMMIT_MSG_FILE > tmp_msg
 echo '# The following is a suggested message from llama3' > $COMMIT_MSG_FILE # clear the file, first line will be a comment
