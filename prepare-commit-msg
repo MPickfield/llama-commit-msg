@@ -9,14 +9,11 @@ COMMIT_MSG_FILE=$1
 COMMIT_SOURCE=$2
 SHA1=$3
 
-cat $COMMIT_MSG_FILE | while read line ; do
-    if [[ $line != \# ]] ; then
-        # Probably a handcrafted message, no llama call needed
-        # example: git commit -am"my message" asdf
-        exit 0
-    fi
-    break
-done
+# Check if $COMMIT_MSG_FILE contains any non-comment, non-empty lines
+if grep -qvE '^#|^$' "$COMMIT_MSG_FILE"; then
+    echo "Commit message already exists, skipping ollama suggestion"
+    exit 0
+fi
 
 # explaination of the following code:
 STATUS=$(git status)
@@ -25,8 +22,8 @@ PROMPT_START="You are an expert software developer summarizing changes for a com
 PROMPT="$PROMPT_START\ngit diff output:\n$DIFF\ngit status output:$STATUS\n\n"
 
 cat - $COMMIT_MSG_FILE > tmp_msg
-echo '# The following is a suggested message from llama3' > $COMMIT_MSG_FILE # clear the file, first line will be a comment
-echo $PROMPT | ollama run llama3 >> $COMMIT_MSG_FILE
+echo $PROMPT | ollama run llama3 > $COMMIT_MSG_FILE
+echo '# Above is a suggested message from llama3, to exit without committing you must remove it' >> $COMMIT_MSG_FILE # clear the file, first line will be a comment
 cat tmp_msg >> $COMMIT_MSG_FILE
 rm tmp_msg
 
