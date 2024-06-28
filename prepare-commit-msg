@@ -9,8 +9,11 @@ COMMIT_MSG_FILE=$1
 COMMIT_SOURCE=$2
 SHA1=$3
 
-# test wip
-cat $COMMIT_MSG_FILE
+if [[ $line != \#* ]] ; then
+    # Probably a handcrafted message, no llama call needed
+    # example: git commit -am"my message"
+    exit 0
+fi
 
 # explaination of the following code:
 STATUS=$(git status)
